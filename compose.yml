@@ -1,0 +1,16 @@
+volumes:
+  fibermap_data:
+
+services:
+  fibermap:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - TELEGRAM_BOT_TOKEN=
+      - TELEGRAM_CHAT_ID=
+      - ARCHIVE_URL=https://www.fibercop.it/wp-content/uploads/2021/06/elenco_cro_cno.zip
+      - FETCH_TIME=18:00
+    volumes:
+      - fibermap_data:/app/data
+    restart: unless-stopped

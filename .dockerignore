@@ -1,0 +1,16 @@
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.egg-info/
+dist/
+build/
+.git
+.gitignore
+.env
+.env.example
+README.md
+elenco_cro_cno/
+elenco_cro_cno.zip
+.DS_Store
