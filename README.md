@@ -13,12 +13,8 @@ Unofficial mirror API for FiberCop's latest CRO/CNO data. Provides endpoints to 
 - **cache.py**: Thread-safe singleton cache with pre-computed views (listmap for maps, details dict for O(1) ID lookups, stats aggregations)
 - **main.py**: FastAPI with 7 endpoints - `/raw`, `/list` (objects), `/listmap` (arrays for map perf), `/download` (CSV), `/details/{id}`, `/stats`, `/health`
 
-**Key optimizations**:
+**Some optimizations**:
 - Integer-based IDs (not UUIDs or already existing fields) for faster lookup
 - Array-of-arrays format `[[id,lat,lon,type],...]` minimizes JSON payload
 - ETag + 24h cache headers on all responses
-- GZip middleware for >1KB responses
-- Disk-persisted CSV survives container restarts
-
-**Why did i do this?**:     
-Single process, async I/O, in-memory lookups → <10ms response times, no DB complexity, perfect for read-heavy datasets with daily refresh cycle.
+- Disk-persisted CSV survives container restart
